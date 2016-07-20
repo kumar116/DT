@@ -13,18 +13,61 @@ public class LinkedList<T> {
         }
     }
 
-    public void add(T data) {
-        head = add(head, data);
+    public void addToTail(T data) {
+        head = addToTail(head, data);
     }
 
-    private Node<T> add(Node<T> head, T data) {
+    private Node<T> addToTail(Node<T> head, T data) {
         if (head == null) {
             size++;
             return new Node<T>(data);
         } else {
-            head.next = add(head.next, data);
+            head.next = addToTail(head.next, data);
         }
         return head;
+    }
+
+    public void addToHead(T data) {
+        if (head == null) {
+            head = new Node<T>(data);
+        } else {
+            Node<T> curr = new Node<T>(data);
+            curr.next = head;
+            head = curr;
+        }
+        size++;
+    }
+
+    public void remove(T data) {
+        remove(data, false);
+    }
+
+    public void remove(T data, boolean all) {
+        if (head == null) {
+            return;
+        } else {
+           Node<T> curr = head;
+           Node<T> prev = null;
+           while (curr != null) {
+                if (curr.data.equals(data)) {
+                    if (prev == null) {
+                        head = curr.next;
+                        curr.data = null;
+                        curr.next = null;
+                    } else {
+                        prev.next = curr.next;
+                        curr.data = null;
+                        curr.next = null;
+                    }
+                    size--;
+                    if (!all) {
+                        return;
+                    }
+                }
+                prev = curr;
+                curr = curr.next;
+            }
+        }
     }
 
     public void print() {
@@ -32,11 +75,11 @@ public class LinkedList<T> {
     }
 
     private void print(Node<T> head) {
-        if(head == null) {
-            System.out.println();
+        if(head.next == null) {
+            System.out.println(head.data);
             return;
         } else {
-            System.out.print(head.data + "\t");
+            System.out.print(head.data + ",");
             print(head.next);
         }
     }
