@@ -10,8 +10,8 @@ set key reverse Left outside
 set grid
 set style data linespoints
 
-set xrange [0:100000]
-set yrange [0:1000]
+set xrange [0:1000000]
+set yrange [0:10000]
 
 set output "plot_ll_recursion.png"
 plot "ll_recursion.data" using 1:2 title "Data"
