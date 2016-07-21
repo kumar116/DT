@@ -25,6 +25,17 @@ public class Main {
                 startTime = endTime;
             }
             bw.close();
+
+            bw = new BufferedWriter(new FileWriter("ll_java.data"));
+            java.util.LinkedList<Integer> ll = new java.util.LinkedList<Integer>();
+            startTime = System.nanoTime();
+            for (int i=0; i<10000; i++) {
+                ll.add(new Integer(i));
+                long endTime = System.nanoTime();
+                bw.write((endTime - startTime) + " " + i + "\n");
+                startTime = endTime;
+            }
+            bw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

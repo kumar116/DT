@@ -17,5 +17,7 @@ set output "plot_ll_recursion.png"
 plot "ll_recursion.data" using 1:2 title "Data"
 
 set output "plot_ll_loop.png"
-plot "ll_loop.data" using 1:2 title "Data
+plot "ll_loop.data" using 1:2 title "Data"
 
+set output "plot_ll_java.png"
+plot "ll_java.data" using 1:2 title "Data"
