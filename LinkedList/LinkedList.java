@@ -42,6 +42,21 @@ public class LinkedList<T> {
         remove(data, false);
     }
 
+    public boolean contains(T data) {
+        if (head == null) {
+            return false;
+        } else {
+            Node<T> curr = head;
+            while (curr != null) {
+                if (curr.data.equals(data)) {
+                    return true;
+                }
+                curr = curr.next;
+            }
+            return false;
+        }
+    }
+
     public void remove(T data, boolean all) {
         if (head == null) {
             return;
