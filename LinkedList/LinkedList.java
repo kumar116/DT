@@ -38,6 +38,35 @@ public class LinkedList<T> {
         size++;
     }
 
+    public T popFromHead() {
+        if (head == null) {
+            return null;
+        } else {
+            Node<T> curr = head;
+            head = curr.next;
+            curr.next = null;
+            size--;
+            return curr.data;
+        }
+    }
+
+    public T popFromTail() {
+        if (head == null) {
+            return null;
+        } else {
+            Node<T> curr = head;
+            Node<T> prev = null;
+            while (curr.next != null) {
+                prev = curr;
+                curr = curr.next;
+            }
+            prev.next = null;
+            curr.next = null;
+            size--;
+            return curr.data;
+        }
+    }
+
     public void remove(T data) {
         remove(data, false);
     }
