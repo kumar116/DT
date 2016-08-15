@@ -2,6 +2,7 @@ public class LinkedList<T> {
 
     public Node<T> head;
     public int size;
+    private Node<T> tail;
 
     public class Node<E> {
         public E data;
@@ -20,7 +21,8 @@ public class LinkedList<T> {
     private Node<T> addToTail(Node<T> head, T data) {
         if (head == null) {
             size++;
-            return new Node<T>(data);
+            tail = new Node<T>(data);
+            return tail;
         } else {
             head.next = addToTail(head.next, data);
         }
@@ -29,7 +31,8 @@ public class LinkedList<T> {
 
     public void addToHead(T data) {
         if (head == null) {
-            head = new Node<T>(data);
+            tail = new Node<T>(data);
+            head = tail;
         } else {
             Node<T> curr = new Node<T>(data);
             curr.next = head;
@@ -54,16 +57,12 @@ public class LinkedList<T> {
         if (head == null) {
             return null;
         } else {
-            Node<T> curr = head;
-            Node<T> prev = null;
-            while (curr.next != null) {
-                prev = curr;
-                curr = curr.next;
-            }
-            prev.next = null;
-            curr.next = null;
+            T data = tail.data;
+            tail.next = null;
+            tail.data = null;
+            tail = null;
             size--;
-            return curr.data;
+            return data;
         }
     }
 
