@@ -1,6 +1,5 @@
 <head>
   <title>mongo-stack</title>
-  
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -9,46 +8,45 @@
 </body>
 
 <template name="example">
-	
-  <h1>STACKS</h1>
+
+  <h1>STACK</h1>
   <hr>
   <br>
-  Stacks abstract data types(ADT) as a whole allows for three types of basic operations.
-  
+  STACK as an abstract data types(ADT) has three basic operations.
+
   <p style="indent: 15px;">
-	<ul>
-		<li>push(data)</li>
-		<li>pop()</li>
-		<li>isEmpty()</li>
-	</ul>
+  <ul>
+    <li>push(data)</li>
+    <li>pop()</li>
+    <li>isEmpty()</li>
+  </ul>
   </p>
-  
+
   <p>
-  Stacks is LIFO data structure, Last In First Out.
+  STACK is LIFO(Last In First Out).
   </p>
-  
+
   <h1>Demonstration</h1>
   <hr>
-  <p>Use push to push values in the stack. Pop to pop the last value out. isEmpty to check for
-  list emptiness.
+  <p>Use push to push a value in the stack. Pop to pop a value. isEmpty to check for emptiness.
   </p>
-  
+
   <input type="input" id="pushValue" />   
   <input type="button" class="btn btn-default"  id="push" value="Push"/>
   <input type="button" class="btn btn-default"  id="pop" value="Pop"/>
   <input type="button"  class="btn btn-default" id="reset" value="Reset"/>
-  
+
   <br>
   <input type="button" class="btn btn-default"  id="isEmpty" value="isEmpty"/>
   : <span id="isEmptyStatus"> </span>
   <br>
-  
+
   <!--
-  <input type="button" class="btn btn-default" type="button" id="peek" value="Peek"/>
-  :<span id="peekValue"> </span>
+    <input type="button" class="btn btn-default" type="button" id="peek" value="Peek"/>
+    :<span id="peekValue"> </span>
   -->
 
- 
+
   <hr>
   {{>printStack}}
 </template>
