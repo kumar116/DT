@@ -31,3 +31,18 @@ NoSQL database(for example MongoDB) can be used to store and make any kind of da
 To try a demonstration, do meteor run inside mongo-stack folder.
 
 ![Mongo Stack](https://github.com/kumar116/DT/blob/master/mongo-stack/stack-mongo.jpg?raw=true "Mongo Stack")
+
+##Graph
+make main
+
+Will run a simple graph algorithm to do a 
++ BFS - Breadth First Search
++ DFS - Depth First Search
++ isCyclic - If a graph is cyclic
+
+on a directed graph and undirected graph
+
+##To Do
++ Distribute test file and src file in different folder using maven
++ Move build process to Maven from Makefiles.
+
