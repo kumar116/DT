@@ -2,12 +2,14 @@
 
 ##Linked List
 
-**Use**
+**Usage**
 + addToHead(T data) - Add any generic data to the head of the list
 + addToTail(T data) - Add any generic data to the tail of the list
 + contains(T data) - Search for the first occurrence of data in the list
 + remove(T data) - Remove the first occurrence of data in the list
 + remove(T data, boolean all) - Set boolean to true to remove all occurrences of the data in the list
+
+**Notes**
 
 Plot of LinkedList when using simple O(1) insertion | Plot of LinkedList when using java.util's LinkedList]
 :--------------------------------------------------:|:-----------------------------------------------------:
