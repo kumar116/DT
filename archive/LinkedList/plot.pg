@@ -2,9 +2,9 @@
 reset
 set terminal png
 
-set xlabel "Time Elapsed"
-set ylabel "Index Covered"
-set title "Execution Time Plot"
+set xlabel "TIME"
+set ylabel "INDEX"
+set title "Insertion Time Plot"
 
 set key reverse Left outside
 set grid
