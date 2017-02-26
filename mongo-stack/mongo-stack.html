@@ -1,0 +1,61 @@
+<head>
+  <title>mongo-stack</title>
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  {{> example}}
+</body>
+
+<template name="example">
+	
+  <h1>STACKS</h1>
+  <hr>
+  <br>
+  Stacks abstract data types(ADT) as a whole allows for three types of basic operations.
+  
+  <p style="indent: 15px;">
+	<ul>
+		<li>push(data)</li>
+		<li>pop()</li>
+		<li>isEmpty()</li>
+	</ul>
+  </p>
+  
+  <p>
+  Stacks is LIFO data structure, Last In First Out.
+  </p>
+  
+  <h1>Demonstration</h1>
+  <hr>
+  <p>Use push to push values in the stack. Pop to pop the last value out. isEmpty to check for
+  list emptiness.
+  </p>
+  
+  <input type="input" id="pushValue" />   
+  <input type="button" class="btn btn-default"  id="push" value="Push"/>
+  <input type="button" class="btn btn-default"  id="pop" value="Pop"/>
+  <input type="button"  class="btn btn-default" id="reset" value="Reset"/>
+  
+  <br>
+  <input type="button" class="btn btn-default"  id="isEmpty" value="isEmpty"/>
+  : <span id="isEmptyStatus"> </span>
+  <br>
+  
+  <!--
+  <input type="button" class="btn btn-default" type="button" id="peek" value="Peek"/>
+  :<span id="peekValue"> </span>
+  -->
+
+ 
+  <hr>
+  {{>printStack}}
+</template>
+
+<template name="printStack">
+  {{#each values}}
+  <!--{{this.count}},-->
+  <div class="bg-success" style="width: 105px; height: 22px; border-right: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid silver;padding: 0; margin-bottom: -20px;"><center>{{this.stackValue}}</center></div><br>
+  {{/each}}
+</template>
