@@ -11,6 +11,8 @@
 
 **Notes**
 
-Plot of LinkedList when using simple O(1) insertion | Plot of LinkedList when using java.util's LinkedList]
+Plot of interval time of insertion of each element using ...
+
+ java.kumar116.LinkedList | java.util.LinkedList
 :--------------------------------------------------:|:-----------------------------------------------------:
 ![Plot of LinkedList when using simple O(1) insertion](https://github.com/kumar116/cs251/blob/master/archive/LinkedList/plot_ll_loop.png?raw=true "Plot of LinkedList when using simple O(1) insertion") | ![Plot of LinkedList when using java.util's LinkedList](https://github.com/kumar116/cs251/blob/master/archive/LinkedList/plot_ll_java.png?raw=true "Plot of LinkedList when using java.util's LinkedList")
