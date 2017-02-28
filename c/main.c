@@ -15,6 +15,8 @@ int main(char * argc) {
   insert(head, C);
   insert(head, B);
   insert(head, A);
+  reverse(head);
+  print(*head);
   delete(head, B);
   delete(head, A);
   delete(head, C);
