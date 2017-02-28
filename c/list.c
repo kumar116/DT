@@ -20,10 +20,19 @@ void insert(struct node **head, char *data) {
     (*head) = curr;
   }
 }
+
 void freeNode(struct node *curr) {
   curr->next = NULL;
   free(curr->data);
   free(curr);
+}
+
+void freeList(struct node *head) {
+  if (head == NULL) {
+    return;
+  }
+  freeList(head->next);
+  freeNode(head);
 }
 
 void delete(struct node **head, char *data) {
@@ -63,9 +72,10 @@ int search(struct node *head, char *data) {
 void print(struct node *head) {
   struct node *curr = head;
   while (curr != NULL) {
-    printf("%s\n", curr->data);
+    printf("%s ", curr->data);
     curr = curr->next;
   }
+  printf("\n");
 }
 
 int size(struct node *head) {
@@ -90,4 +100,43 @@ void reverse(struct node **head) {
     curr = next;
   }
   (*head) = prev;
+}
+
+void split(struct node *head, struct node **front, struct node **back) {
+  struct node *slow = head;
+  struct node *fast = head;
+  struct node *temp = NULL;
+  while (fast != NULL) {
+    temp = slow;
+    slow = slow->next;
+    fast = (fast->next) ? fast->next->next : NULL;
+  } 
+  temp->next = NULL;
+  (*back) = slow;
+  (*front) = head;
+}
+
+void zip(struct node **head, struct node *front, struct node *back) {
+  struct node *curr1 = front;
+  struct node *next1 = NULL;
+  struct node *curr2 = back;
+  struct node *next2 = NULL;
+
+  while (curr1 != NULL && curr2 != NULL) {
+    next1 = curr1->next;
+    next2 = curr2->next;
+    curr1->next = curr2;
+    curr2->next = next1;
+    curr1 = next1;
+    curr2 = next2;
+  }
+  *head = front;
+}
+
+void join(struct node *front, struct node *back) {
+  struct node *curr = front;
+  while (curr->next != NULL) {
+    curr = curr->next;
+  }
+  curr->next = back;
 }
