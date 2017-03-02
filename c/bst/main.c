@@ -21,6 +21,9 @@ int main(char * argc) {
   postorder(head);
   printf("\n");
 
+  printf("%d\n", minimum(head));
+  printf("%d\n", maximum(head));
+
   free(head);
   return 1;
 }   

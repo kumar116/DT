@@ -54,3 +54,19 @@ void postorder(struct node *head) {
     printf("%d ", head->data);
   }
 }
+
+int minimum(struct node *head) {
+  struct node *curr = head;
+  if (curr->left == NULL) {
+    return curr->data;
+  }
+  return minimum(head->left);
+}
+
+int maximum(struct node *head) {
+  struct node *curr = head;
+  if (curr->right == NULL) {
+    return curr->data;
+  }
+  return minimum(head->right);
+}
