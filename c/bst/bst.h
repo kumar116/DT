@@ -13,3 +13,4 @@ void postorder(struct node *head);
 
 int minimum(struct node *head);
 int maximum(struct node *head);
+int search(struct node *head, int data);

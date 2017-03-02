@@ -24,6 +24,10 @@ int main(char * argc) {
   printf("%d\n", minimum(head));
   printf("%d\n", maximum(head));
 
+  printf("%d\n", search(head, 1));
+  printf("%d\n", search(head, 5));
+  printf("%d\n", search(head, 10));
+
   free(head);
   return 1;
 }   

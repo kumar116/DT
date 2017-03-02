@@ -70,3 +70,17 @@ int maximum(struct node *head) {
   }
   return minimum(head->right);
 }
+
+int search(struct node *head, int data) {
+  if (head == NULL) {
+    return 0;
+  }
+  if (head->data == data) {
+    return 1;
+  }
+  if (head->data > data) {
+    return search(head->left, data);
+  } else {
+    return search(head->right, data);
+  }
+}
