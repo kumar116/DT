@@ -6,6 +6,7 @@ struct node {
 
 struct node * newNode(int data);
 struct node * insert(struct node *head, int data);
+struct node * delete(struct node *head, int data);
 
 void inorder(struct node *head);
 void preorder(struct node *head);
@@ -13,4 +14,6 @@ void postorder(struct node *head);
 
 int minimum(struct node *head);
 int maximum(struct node *head);
-int search(struct node *head, int data);
+struct node * search(struct node *head, int data);
+
+struct node * successor(struct node *head);

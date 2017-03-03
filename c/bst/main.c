@@ -15,19 +15,23 @@ int main(char * argc) {
   inorder(head); 
   printf("\n");
 
-  preorder(head);
-  printf("\n");
+  //preorder(head);
+  //printf("\n");
 
-  postorder(head);
-  printf("\n");
+  //postorder(head);
+  //printf("\n");
 
-  printf("%d\n", minimum(head));
-  printf("%d\n", maximum(head));
+  //printf("%d\n", minimum(head));
+  //printf("%d\n", maximum(head));
 
-  printf("%d\n", search(head, 1));
-  printf("%d\n", search(head, 5));
-  printf("%d\n", search(head, 10));
+  //printf("%p\n", search(head, 1));
+  //printf("%p\n", search(head, 5));
+  //printf("%p\n", search(head, 10));
 
+  //delete(head, 1);
+  delete(head, 2); 
+
+  inorder(head);
   free(head);
   return 1;
 }   

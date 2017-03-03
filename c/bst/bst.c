@@ -25,6 +25,43 @@ struct node * insert(struct node *head, int data) {
   return head;
 }
 
+struct node * successor(struct node *head) {
+  if (head->left == NULL && head->right == NULL) {
+    return head;
+  }
+  return successor(head->left);
+}
+
+struct node * delete(struct node *head, int data) {
+  if (head == NULL) {
+    return head;
+  }
+  if (data > head->data) {
+    head->right = delete(head->right, data);
+  } else if (data < head->data) {
+    head->left = delete(head->left, data);
+  } else {
+    struct node *curr = NULL;
+    if (head->left == NULL) {
+      curr = head->right;
+      head->right = NULL;
+      free(head);
+      return curr;
+    } else if (head->right == NULL) {
+      curr = head->left;
+      head->left = NULL;
+      free(head);
+      return curr;
+    } else {
+      curr = successor(head->right);
+      printf("succ %d\n", curr->data);
+      head->data = curr->data;
+      head->right = delete(head->right, curr->data); //can we do better, replace the node instead of replacing the key ?
+      return head;
+    }
+  } 
+}
+
 void inorder(struct node *head) {
   if (head == NULL) {
     return;
@@ -71,12 +108,12 @@ int maximum(struct node *head) {
   return minimum(head->right);
 }
 
-int search(struct node *head, int data) {
+struct node * search(struct node *head, int data) {
   if (head == NULL) {
-    return 0;
+    NULL;
   }
   if (head->data == data) {
-    return 1;
+    head;
   }
   if (head->data > data) {
     return search(head->left, data);
