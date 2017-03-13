@@ -43,6 +43,10 @@ public class LinkedList<T> {
         size++;
     }
 
+    public void insert(T data) {
+        addToHead(data);
+    }
+
     public T popFromHead() {
         if (head == null) {
             return null;
