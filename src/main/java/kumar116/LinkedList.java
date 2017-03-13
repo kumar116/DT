@@ -64,10 +64,7 @@ public class LinkedList<T> {
             return null;
         } else {
             T data = tail.data;
-            tail.next = null;
-            tail.data = null;
-            tail = null;
-            size--;
+            remove(data);
             return data;
         }
     }
@@ -119,17 +116,15 @@ public class LinkedList<T> {
         }
     }
 
-    public void print() {
-        print(head);
+    public String traverse() {
+        return traverse(head);
     }
 
-    private void print(Node<T> head) {
+    private String traverse(Node<T> head) {
         if(head.next == null) {
-            System.out.println(head.data);
-            return;
+            return head.data.toString();
         } else {
-            System.out.print(head.data + ",");
-            print(head.next);
+            return head.data.toString() + traverse(head.next);
         }
     }
 }
