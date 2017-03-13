@@ -46,3 +46,22 @@ on a directed graph and undirected graph
 + Distribute test file and src file in different folder using maven
 + Move build process to Maven from Makefiles.
 
+<pre>
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running kumar116.LinkedListTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec - in kumar116.LinkedListTest
+
+Results :
+
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.036 s
+[INFO] Finished at: 2017-03-13T02:36:39-04:00
+[INFO] Final Memory: 12M/153M
+[INFO] ------------------------------------------------------------------------
+</pre>
