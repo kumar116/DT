@@ -4,7 +4,7 @@ public class LinkedList<T> {
 
     public Node<T> head;
     public int size;
-    private Node<T> tail;
+    public Node<T> tail;
 
     public class Node<E> {
         public E data;

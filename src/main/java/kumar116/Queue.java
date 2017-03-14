@@ -10,6 +10,10 @@ public class Queue<T> extends LinkedList<T> {
         return popFromTail();
     }
 
+    public T peek() {
+        return (tail != null) ? tail.data : null;
+    }
+
     public boolean isEmpty() {
       return size == 0;
     }

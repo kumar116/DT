@@ -10,6 +10,10 @@ public class Stack<T> extends LinkedList<T> {
         return popFromHead();
     }
 
+    public T peek() {
+        return (head != null) ? head.data : null;
+    }
+
     public boolean isEmpty() {
       return size == 0;
     }

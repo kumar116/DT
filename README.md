@@ -22,6 +22,10 @@ Will run a simple graph algorithm to do a
 
 on a directed graph and undirected graph
 
+TODO
+==================
+* Make popFromTail O(1) operartion using Single Linked List.
+ 
 <pre>
 -------------------------------------------------------
  T E S T S

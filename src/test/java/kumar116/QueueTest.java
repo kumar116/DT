@@ -22,11 +22,26 @@ public class QueueTest {
   }
 
   @Test
+  public void peekingFromQueueShouldShowElementFromEndOfQueue() {
+    queue.push('B');
+    queue.push('A');
+
+    assertEquals("", 'B', queue.peek());
+    assertEquals("", 2, queue.size);
+  }
+
+  @Test
+  public void peekingFromAnEmptyQueueShouldShowANullValue() {
+    assertEquals("", null, queue.peek());
+  }  
+
+  @Test
   public void poppingFromQueueShouldPopElementFromEndOfQueue() {
     queue.push('B');
     queue.push('A');
 
     assertEquals("", 'B', queue.pop());
+    assertEquals("", 1, queue.size);
   }
 
   @Test

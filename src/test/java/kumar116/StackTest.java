@@ -22,11 +22,26 @@ public class StackTest {
   }
 
   @Test
+  public void peekingFromStackShouldShowElementFromStack() {
+      stack.push('B');
+      stack.push('A');
+
+      assertEquals("", 'A', stack.peek());
+      assertEquals("", 2, stack.size);
+  }
+
+  @Test
+  public void peekingFromAnEmptyStackShouldShowANullValue() {
+      assertEquals("", null, stack.peek());
+  }
+
+  @Test
   public void poppingFromStackShouldPopElementFromStack() {
     stack.push('B');
     stack.push('A');
 
     assertEquals("", 'A', stack.pop());
+    assertEquals("", 1, stack.size);
   }
 
   @Test
