@@ -30,6 +30,11 @@ public class StackTest {
   }
 
   @Test
+  public void poppingFromAnEmptyStackShouldPopANullValue() {
+    assertEquals("", null, stack.pop());
+  }  
+
+  @Test
   public void pushingElementInStackShouldPushElement() {
     stack.push('B');
     stack.push('A');
