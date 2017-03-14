@@ -18,4 +18,12 @@ public class Stack<T> {
     public int size() {
         return list.size;
     }
+
+    public boolean isEmpty() {
+      return list.size == 0;
+    }
+
+    public String traverse() {
+      return list.traverse();
+    }
 }

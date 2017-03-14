@@ -18,7 +18,7 @@ public class LinkedListTest {
     @After
     public void destroyLinkedListObject() {
       linkedList = null;
-      //System.gc();
+      System.gc();
     }
 
     @Test
