@@ -1,13 +1,13 @@
 package kumar116;
 
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
-
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 public class QueueTest {
-  
+
   private Queue queue;
 
   @Before
@@ -33,7 +33,7 @@ public class QueueTest {
   @Test
   public void peekingFromAnEmptyQueueShouldShowANullValue() {
     assertEquals("", null, queue.peek());
-  }  
+  }
 
   @Test
   public void poppingFromQueueShouldPopElementFromEndOfQueue() {
@@ -47,7 +47,7 @@ public class QueueTest {
   @Test
   public void poppingFromAnEmptyQueueShouldPopANullValue() {
     assertEquals("", null, queue.pop());
-  }  
+  }
 
   @Test
   public void pushingElementInQueueShouldPushElement() {
@@ -59,7 +59,7 @@ public class QueueTest {
 
   @Test
   public void emptyQueueShouldReturnTrueOnIsEmpty() {
-    assertTrue("", queue.isEmpty()); 
+    assertTrue("", queue.isEmpty());
   }
 
   @Test
@@ -67,5 +67,4 @@ public class QueueTest {
     queue.push('A');
     assertFalse("", queue.isEmpty());
   }
-
 }

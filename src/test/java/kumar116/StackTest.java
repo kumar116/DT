@@ -1,13 +1,13 @@
 package kumar116;
 
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
-
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 public class StackTest {
-  
+
   private Stack stack;
 
   @Before
@@ -23,16 +23,16 @@ public class StackTest {
 
   @Test
   public void peekingFromStackShouldShowElementFromStack() {
-      stack.push('B');
-      stack.push('A');
+    stack.push('B');
+    stack.push('A');
 
-      assertEquals("", 'A', stack.peek());
-      assertEquals("", 2, stack.size);
+    assertEquals("", 'A', stack.peek());
+    assertEquals("", 2, stack.size);
   }
 
   @Test
   public void peekingFromAnEmptyStackShouldShowANullValue() {
-      assertEquals("", null, stack.peek());
+    assertEquals("", null, stack.peek());
   }
 
   @Test
@@ -47,7 +47,7 @@ public class StackTest {
   @Test
   public void poppingFromAnEmptyStackShouldPopANullValue() {
     assertEquals("", null, stack.pop());
-  }  
+  }
 
   @Test
   public void pushingElementInStackShouldPushElement() {
@@ -59,7 +59,7 @@ public class StackTest {
 
   @Test
   public void emptyStackShouldReturnTrueOnIsEmpty() {
-    assertTrue("", stack.isEmpty()); 
+    assertTrue("", stack.isEmpty());
   }
 
   @Test
@@ -67,5 +67,4 @@ public class StackTest {
     stack.push('A');
     assertFalse("", stack.isEmpty());
   }
-
 }

@@ -1,6 +1,6 @@
 package kumar116;
 
-public class Mergesort <T extends Comparable<T>> {
+public class Mergesort<T extends Comparable<T>> {
 
   public void sort(T[] data) {
     mergesort(data, 0, data.length - 1);
@@ -25,18 +25,18 @@ public class Mergesort <T extends Comparable<T>> {
     i = k = low;
     int j = middle + 1;
     while (i <= middle && j <= high) {
-      if (((T)dataCopy[i]).compareTo((T)dataCopy[j]) <= 0) {
-        data[k] = (T)dataCopy[i];
+      if (((T) dataCopy[i]).compareTo((T) dataCopy[j]) <= 0) {
+        data[k] = (T) dataCopy[i];
         i++;
       } else {
-        data[k] = (T)dataCopy[j];
+        data[k] = (T) dataCopy[j];
         j++;
       }
       k++;
     }
 
     while (i <= middle) {
-      data[k] = (T)dataCopy[i];
+      data[k] = (T) dataCopy[i];
       k++;
       i++;
     }
@@ -46,11 +46,10 @@ public class Mergesort <T extends Comparable<T>> {
     Mergesort mergeSort = new Mergesort();
     Integer[] data = {1, 9, 2, 8, 4, 7, 6, 5};
     mergeSort.sort(data);
-    
+
     for (int i = 0; i < data.length; i++) {
       System.out.print(data[i].toString() + "\t");
     }
     System.out.println();
   }
-} 
-
+}
