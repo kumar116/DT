@@ -1,8 +1,11 @@
 package kumar116;
 
-public class Mergesort<T extends Comparable<T>> {
+public class MergeSort<T extends Comparable<T>> {
 
   public void sort(T[] data) {
+    if (data == null || data.length == 0) {
+      return;
+    }
     mergesort(data, 0, data.length - 1);
   }
 
@@ -40,16 +43,5 @@ public class Mergesort<T extends Comparable<T>> {
       k++;
       i++;
     }
-  }
-
-  public static void main(String[] args) {
-    Mergesort mergeSort = new Mergesort();
-    Integer[] data = {1, 9, 2, 8, 4, 7, 6, 5};
-    mergeSort.sort(data);
-
-    for (int i = 0; i < data.length; i++) {
-      System.out.print(data[i].toString() + "\t");
-    }
-    System.out.println();
   }
 }
