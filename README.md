@@ -25,6 +25,7 @@ on a directed graph and undirected graph
 TODO
 ==================
 * Make popFromTail O(1) operartion using Single Linked List.
+* Use comparator function in bst.c
  
 <pre>
 -------------------------------------------------------
