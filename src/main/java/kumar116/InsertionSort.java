@@ -9,6 +9,9 @@ package kumar116;
 public class InsertionSort<T extends Comparable<T>> {
 
   public void sort(T[] element) {
+    if (element == null || element.length == 0) {
+      return;
+    }
     int i, j;
     for (j = 1; j < element.length; j++) {
       T key = element[j];
@@ -17,16 +20,5 @@ public class InsertionSort<T extends Comparable<T>> {
       }
       element[i + 1] = key;
     }
-  }
-
-  public static void main(String[] args) {
-    Integer[] element = {9, 5, 3, 2, 7, 8, 1, 6, 4, 0};
-    InsertionSort insertionSort = new InsertionSort();
-    insertionSort.sort(element);
-
-    for (int i = 0; i < element.length; i++) {
-      System.out.print(element[i].toString() + "\t");
-    }
-    System.out.println();
   }
 }
