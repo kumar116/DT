@@ -59,7 +59,7 @@ struct node * delete(struct node *head, int data) {
       head->right = delete(head->right, curr->data); //can we do better, replace the node instead of replacing the key ?
       return head;
     }
-  } 
+  }
 }
 
 void inorder(struct node *head) {
