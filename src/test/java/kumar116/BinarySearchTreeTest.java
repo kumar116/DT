@@ -23,6 +23,7 @@ public class BinarySearchTreeTest {
 
   @Test
   public void inorderTraversalShouldBeCorrect() {
+    assertEquals("", "", binarySearchTree.inorder());
     binarySearchTree.insert(4);
     binarySearchTree.insert(2);
     binarySearchTree.insert(5);
@@ -33,6 +34,7 @@ public class BinarySearchTreeTest {
 
   @Test
   public void preorderTraversalShouldBeCorrect() {
+    assertEquals("", "", binarySearchTree.preorder());
     binarySearchTree.insert(4);
     binarySearchTree.insert(2);
     binarySearchTree.insert(5);
@@ -43,6 +45,7 @@ public class BinarySearchTreeTest {
 
   @Test
   public void postorderTraversalShouldBeCorrect() {
+    assertEquals("", "", binarySearchTree.postorder());
     binarySearchTree.insert(4);
     binarySearchTree.insert(2);
     binarySearchTree.insert(5);
@@ -53,6 +56,7 @@ public class BinarySearchTreeTest {
 
   @Test
   public void minimumShouldReturnTheMinimumValue() {
+    assertEquals("", null, binarySearchTree.minimum());
     binarySearchTree.insert(4);
     binarySearchTree.insert(2);
     binarySearchTree.insert(5);
@@ -63,11 +67,23 @@ public class BinarySearchTreeTest {
 
   @Test
   public void maximumShouldReturnTheMaximumValue() {
+    assertEquals("", null, binarySearchTree.maximum());
     binarySearchTree.insert(4);
     binarySearchTree.insert(2);
     binarySearchTree.insert(5);
     binarySearchTree.insert(3);
     binarySearchTree.insert(1);
     assertEquals("", "5", binarySearchTree.maximum().toString());
+  }
+
+  @Test
+  public void deletingAnElementFromBinarySearchTreeShouldDeleteTheElement() {
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(1);
+    binarySearchTree.delete(5);
+    assertEquals("", "1234", binarySearchTree.inorder());
   }
 }

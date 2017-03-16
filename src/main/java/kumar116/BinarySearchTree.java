@@ -36,7 +36,32 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return head;
   }
 
-  public void delete(T data) {}
+  public void delete(T data) {
+    head = delete(head, data);
+  }
+
+  public Node<T> delete(Node<T> head, T data) {
+    if (head == null) {
+      return null;
+    }
+    if (((T) head.data).compareTo(data) < 0) {
+      head.right = delete(head.right, data);
+    } else if (((T) head.data).compareTo(data) > 0) {
+      head.left = delete(head.left, data);
+    } else {
+      if (head.left == null) {
+        return head.right;
+      } else if (head.right == null) {
+        return head.left;
+      } else {
+        T newData = successor(head.right);
+        head.data = newData;
+        head.right = delete(head.right, newData);
+        return head;
+      }
+    }
+    return head;
+  }
 
   public String inorder() {
     return inorder(head);
@@ -75,6 +100,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   public T minimum() {
+    if (head == null) {
+      return null;
+    }
     return minimum(head);
   }
 
@@ -87,6 +115,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   public T maximum() {
+    if (head == null) {
+      return null;
+    }
     return maximum(head);
   }
 
@@ -117,7 +148,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
   }
 
-  public T successor(T data) {
-    return null;
+  private T successor(Node<T> head) {
+    if (head.left == null && head.right == null) {
+      return head.data;
+    }
+    return successor(head.left);
   }
 }

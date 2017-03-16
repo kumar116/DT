@@ -54,7 +54,6 @@ struct node * delete(struct node *head, int data) {
       return curr;
     } else {
       curr = successor(head->right);
-      printf("succ %d\n", curr->data);
       head->data = curr->data;
       head->right = delete(head->right, curr->data); //can we do better, replace the node instead of replacing the key ?
       return head;
