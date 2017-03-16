@@ -1,8 +1,5 @@
 package kumar116;
 
-/*
- * Binary Search Tree (No duplicates)
- */
 public class BinarySearchTree<T extends Comparable<T>> {
 
   private Node<T> head;
