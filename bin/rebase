@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+branchname=$1
+
+if [ $branchname ]; then
+  git checkout master && git pull
+  git checkout $branchname && git pull
+  git rebase master
+else
+  echo 'Please provide a branch name to rebase to master from'
+fi
