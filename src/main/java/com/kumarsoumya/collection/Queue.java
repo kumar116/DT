@@ -1,17 +1,17 @@
-package kumar116;
+package com.kumarsoumya.collection;
 
-public class Stack<T> extends LinkedList<T> {
+public class Queue<T> extends LinkedList<T> {
 
   public void push(T data) {
     addToHead(data);
   }
 
   public T pop() {
-    return popFromHead();
+    return popFromTail();
   }
 
   public T peek() {
-    return (head != null) ? head.data : null;
+    return (tail != null) ? tail.data : null;
   }
 
   public boolean isEmpty() {

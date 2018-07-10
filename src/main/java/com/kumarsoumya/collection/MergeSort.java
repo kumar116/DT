@@ -1,4 +1,4 @@
-package kumar116;
+package com.kumarsoumya.collection;
 
 public class MergeSort<T extends Comparable<T>> {
 

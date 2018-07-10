@@ -1,32 +1,17 @@
 # Data Structures
 
-##Linked List
+#Linked List
 **Basic Usage**
 + insert(T data) - Inserts any generic data to the head of the list.
 + contains(T data) - Searches for the first occurrence of data in the list.
 + remove(T data) - Removes the first occurrence of data in the list.
 
-##Stack
+#Stack
 **Basic Usage**
 + push(T data) - Add any generic data to the stack.
 + pop() - Get and remove the data at the top.
 + isEmpty() - Find whether the Stack is empty.
 
-##Graph
-make main
-
-Will run a simple graph algorithm to do a 
-+ BFS - Breadth First Search
-+ DFS - Depth First Search
-+ isCyclic - If a graph is cyclic
-
-on a directed graph and undirected graph
-
-TODO
-==================
-* Make popFromTail O(1) operartion using Single Linked List.
-* Use comparator function in bst.c
- 
 <pre>
 -------------------------------------------------------
  T E S T S

@@ -1,4 +1,4 @@
-package kumar116;
+package com.kumarsoumya.collection;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package kumar116;
+package com.kumarsoumya.collection;
 
 /* @author Soumya Kumar
  * (mathbits.com/MathBits/Java/arrays/InsertionSort.htm)
