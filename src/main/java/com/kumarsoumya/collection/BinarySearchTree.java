@@ -4,30 +4,32 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
   private Node<T> head;
 
-  public class Node<E> {
+  protected class Node<E> {
     public E data;
     public Node<E> left;
     public Node<E> right;
 
     public Node(E data) {
       this.data = data;
-      this.left = null;
-      this.right = null;
     }
   }
 
-  public void insert(T data) {
+  public boolean insert(T data) {
     head = insert(head, data);
+    return true;
   }
 
   private Node<T> insert(Node<T> head, T data) {
-    if (head == null) {
-      head = new Node(data);
+    if (null == head) {
+      head = new Node<T>(data);
     } else {
-      if (((T) head.data).compareTo(data) <= 0) {
-        head.right = insert(head.right, data);
-      } else {
+      T value = head.data;
+      if (value == null && null == data) {
         head.left = insert(head.left, data);
+      } else if (value.compareTo(data) >= 0) {
+        head.left = insert(head.left, data);
+      } else {
+        head.right = insert(head.right, data);
       }
     }
     return head;
@@ -37,63 +39,75 @@ public class BinarySearchTree<T extends Comparable<T>> {
     head = delete(head, data);
   }
 
-  public Node<T> delete(Node<T> head, T data) {
-    if (head == null) {
-      return null;
+  private Node<T> delete(Node<T> head, T data) {
+    if (null == head) {
+      return head;
     }
-    if (((T) head.data).compareTo(data) < 0) {
+
+    T value = head.data;
+    if (null != value && value.compareTo(data) < 0) {
       head.right = delete(head.right, data);
-    } else if (((T) head.data).compareTo(data) > 0) {
+    } else if (null != value && value.compareTo(data) > 0) {
       head.left = delete(head.left, data);
-    } else {
-      if (head.left == null) {
+    } else if ((null != value && value.compareTo(data) == 0) || (value == null && null == data)) {
+      if (null == head.left) {
         return head.right;
-      } else if (head.right == null) {
+      } else if (null == head.right) {
         return head.left;
       } else {
-        T newData = successor(head.right);
+        T newData = this.successor(head.right);
         head.data = newData;
         head.right = delete(head.right, newData);
-        return head;
       }
     }
     return head;
   }
 
   public String inorder() {
-    return inorder(head);
+    StringBuilder valueOf = new StringBuilder();
+    inorder(head, valueOf);
+    return valueOf.toString();
   }
 
-  private String inorder(Node<T> head) {
+  private void inorder(Node<T> head, StringBuilder valueOf) {
     if (head == null) {
-      return "";
-    } else {
-      return inorder(head.left) + head.data.toString() + inorder(head.right);
+      return;
     }
+    this.inorder(head.left, valueOf);
+    valueOf.append(String.valueOf(head.data));
+    this.inorder(head.right, valueOf);
   }
 
   public String preorder() {
-    return preorder(head);
+    StringBuilder valueOf = new StringBuilder();
+    preorder(head, valueOf);
+    return valueOf.toString();
   }
 
-  private String preorder(Node<T> head) {
+  private void preorder(Node<T> head, StringBuilder valueOf) {
     if (head == null) {
-      return "";
-    } else {
-      return head.data.toString() + preorder(head.left) + preorder(head.right);
+      return;
     }
+
+    valueOf.append(String.valueOf(head.data));
+    preorder(head.left, valueOf);
+    preorder(head.right, valueOf);
   }
 
   public String postorder() {
-    return postorder(head);
+    StringBuilder valueOf = new StringBuilder();
+    postorder(head, valueOf);
+    return valueOf.toString();
   }
 
-  public String postorder(Node<T> head) {
+  private void postorder(Node<T> head, StringBuilder valueOf) {
     if (head == null) {
-      return "";
-    } else {
-      return postorder(head.left) + postorder(head.right) + head.data.toString();
+      return;
     }
+
+    postorder(head.left, valueOf);
+    postorder(head.right, valueOf);
+    valueOf.append(String.valueOf(head.data));
   }
 
   public T minimum() {
@@ -106,9 +120,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
   private T minimum(Node<T> head) {
     if (head.left == null) {
       return head.data;
-    } else {
-      return minimum(head.left);
     }
+    return minimum(head.left);
   }
 
   public T maximum() {
@@ -121,9 +134,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
   private T maximum(Node<T> head) {
     if (head.right == null) {
       return head.data;
-    } else {
-      return maximum(head.right);
     }
+    return maximum(head.right);
   }
 
   public T search(T data) {
@@ -134,10 +146,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
     if (head == null) {
       return null;
     } else {
-      if (((T) head.data).compareTo(data) == 0) {
+      T value = head.data;
+      if (value == null && null == data) {
         return head.data;
-      }
-      if (((T) head.data).compareTo(data) <= 0) {
+      } else if (value.compareTo(data) == 0) {
+        return head.data;
+      } else if (value.compareTo(data) < 0) {
         return search(head.right, data);
       } else {
         return search(head.left, data);

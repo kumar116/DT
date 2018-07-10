@@ -8,82 +8,69 @@ import org.junit.Test;
 
 public class BinarySearchTreeTest {
 
-  private BinarySearchTree<Integer> binarySearchTree;
+  private Integer[] datas = {4, 2, 5, 3, 1};
 
-  @Before
-  public void createBinarySearchTree() {
-    binarySearchTree = new BinarySearchTree<Integer>();
-  }
+  @Test
+  public void testInorder() {
+    BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
+    assertEquals("Empty Binary Search Tree should return nothing.", "", tree.inorder());
 
-  @After
-  public void destroyBinarySearchTree() {
-    binarySearchTree = null;
-    System.gc();
+    for(Integer data: datas) {
+      tree.insert(data);
+    }
+
+    assertEquals("", "12345", tree.inorder());
   }
 
   @Test
-  public void inorderTraversalShouldBeCorrect() {
-    assertEquals("", "", binarySearchTree.inorder());
-    binarySearchTree.insert(4);
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(5);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(1);
-    assertEquals("", "12345", binarySearchTree.inorder());
+  public void testPreorder() {
+    BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
+    for(Integer data: datas) {
+      tree.insert(data);
+    }
+
+    assertEquals("", "42135", tree.preorder());
   }
 
   @Test
-  public void preorderTraversalShouldBeCorrect() {
-    assertEquals("", "", binarySearchTree.preorder());
-    binarySearchTree.insert(4);
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(5);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(1);
-    assertEquals("", "42135", binarySearchTree.preorder());
+  public void testPostorder() {
+    BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
+    for(Integer data: datas) {
+      tree.insert(data);
+    }
+
+    assertEquals("", "13254", tree.postorder());
   }
 
   @Test
-  public void postorderTraversalShouldBeCorrect() {
-    assertEquals("", "", binarySearchTree.postorder());
-    binarySearchTree.insert(4);
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(5);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(1);
-    assertEquals("", "13254", binarySearchTree.postorder());
+  public void testMinimum() {
+    BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
+    for(Integer data: datas) {
+      tree.insert(data);
+    }
+
+    assertEquals("", new Integer(1), tree.minimum());
   }
 
   @Test
-  public void minimumShouldReturnTheMinimumValue() {
-    assertEquals("", null, binarySearchTree.minimum());
-    binarySearchTree.insert(4);
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(5);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(1);
-    assertEquals("", "1", binarySearchTree.minimum().toString());
+  public void testMaximum() {
+    BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
+    for(Integer data: datas) {
+      tree.insert(data);
+    }
+
+    assertEquals("", new Integer(5), tree.maximum());
   }
 
   @Test
-  public void maximumShouldReturnTheMaximumValue() {
-    assertEquals("", null, binarySearchTree.maximum());
-    binarySearchTree.insert(4);
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(5);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(1);
-    assertEquals("", "5", binarySearchTree.maximum().toString());
+  public void testDelete() {
+    BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
+    for(Integer data: datas) {
+      tree.insert(data);
+    }
+
+    tree.delete(5);
+    assertEquals("", "1234", tree.inorder());
   }
 
-  @Test
-  public void deletingAnElementFromBinarySearchTreeShouldDeleteTheElement() {
-    binarySearchTree.insert(4);
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(5);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(1);
-    binarySearchTree.delete(5);
-    assertEquals("", "1234", binarySearchTree.inorder());
-  }
 }
