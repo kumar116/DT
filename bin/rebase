@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-if [ $branchname ]; then
-  git checkout master && git pull
-  git rebase master
-fi
