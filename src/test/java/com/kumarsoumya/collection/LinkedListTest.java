@@ -2,137 +2,72 @@ package com.kumarsoumya.collection;
 
 import static org.junit.Assert.*;
 
+import java.lang.Character;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class LinkedListTest {
 
-  private LinkedList linkedList;
+  private Character[] datas = {'A', 'B', 'C'};
 
-  @Before
-  public void createLinkedListObject() {
-    linkedList = new LinkedList();
-  }
-
-  @After
-  public void destroyLinkedListObject() {
-    linkedList = null;
-    System.gc();
+  @Test
+  public void testAdd() {
+    LinkedList<Character> list = new LinkedList<Character>();
+    for (Character data: datas) {
+      list.add(data);
+    }
+    assertEquals(null, "[C,B,A]", list.toString());
   }
 
   @Test
-  public void insertingOneElementShouldInsertOnlyOneElement() {
-    linkedList.insert('A');
-    assertEquals("", "A", linkedList.traverse());
+  public void testRemove() {
+    LinkedList<Character> list = new LinkedList<Character>();
+    for (Character data: datas) {
+      list.add(data);
+    }
+
+    list.remove('B');
+    assertEquals(null, 2, list.size());
+    assertEquals("Middle element of the list should be removed", "[C,A]", list.toString());
+    list.remove('A');
+    assertEquals(null, 1, list.size());
+    assertEquals("First element of the list should be removed", "[C]", list.toString());
+    list.remove('C');
+    assertEquals(null, 0, list.size());
+    assertEquals("Last element of the list should be removed", "[]", list.toString());
   }
 
   @Test
-  public void insertingTwoElementsShouldInsertOnlyTwoElements() {
-    linkedList.insert('B');
-    linkedList.insert('A');
-    assertEquals("", "AB", linkedList.traverse());
+  public void testContains() {
+    LinkedList<Character> list = new LinkedList<Character>();
+    for (Character data: datas) {
+      list.add(data);
+    }
+
+    assertTrue("Should return true if list contains an element", list.contains('B'));
+    assertFalse("Should return false if list doesn't contains an element", list.contains('D'));
   }
 
   @Test
-  public void insertingAtHeadShouldInsertOnlyAtHead() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.addToHead('A');
-    assertEquals("", "ABC", linkedList.traverse());
+  public void testSize() {
+    LinkedList<Character> list = new LinkedList<Character>();
+    for (Character data: datas) {
+      list.add(data);
+    }
+
+    assertEquals(null, 3, list.size());
   }
 
   @Test
-  public void insertingAtTailShouldInsertOnlyAtTail() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.addToTail('A');
-    assertEquals("", "BCA", linkedList.traverse());
+  public void testToString() {
+    LinkedList<Character> list = new LinkedList<Character>();
+    for (Character data: datas) {
+      list.add(data);
+    }
+
+    assertEquals(null, "[C,B,A]", list.toString());
   }
 
-  @Test
-  public void removingFromHeadShouldRemoveOnlyFromHead() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    linkedList.remove('A');
-    assertEquals("", "BC", linkedList.traverse());
-  }
-
-  @Test
-  public void removingFromTailShouldRemoveOnlyFromTail() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    linkedList.remove('C');
-    assertEquals("", "AB", linkedList.traverse());
-  }
-
-  @Test
-  public void removingFromMiddleShouldRemoveOnlyFromMiddle() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    linkedList.remove('B');
-    assertEquals("", "AC", linkedList.traverse());
-  }
-
-  @Test
-  public void searchingForElementInTheListForElementInTheListShouldReturnTrue() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    assertTrue("", linkedList.contains('B'));
-  }
-
-  @Test
-  public void searchingForElementInTheListForElementNotInTheListShouldReturnFalse() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    assertFalse("", linkedList.contains('D'));
-  }
-
-  @Test
-  public void coutingForElementsInTheListShouldReturnCorrectCount() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    assertEquals("", 3, linkedList.size);
-  }
-
-  @Test
-  public void traversingLinkedListShouldPrintListInCorrectOrder() {
-    linkedList.insert('A');
-    linkedList.insert('B');
-    linkedList.insert('C');
-
-    assertEquals("", "CBA", linkedList.traverse());
-  }
-
-  @Test
-  public void poppingFromHeadShouldRemoveAndReturnTheElementFromHead() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    assertEquals("", 'A', linkedList.popFromHead());
-    assertEquals("", "BC", linkedList.traverse());
-  }
-
-  @Test
-  public void poppingFromTailShouldRemoveAndReturnTheElementFromTail() {
-    linkedList.insert('C');
-    linkedList.insert('B');
-    linkedList.insert('A');
-
-    assertEquals("", 'C', linkedList.popFromTail());
-    assertEquals("", "AB", linkedList.traverse());
-  }
 }

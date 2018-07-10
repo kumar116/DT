@@ -1,20 +1,19 @@
 package com.kumarsoumya.collection;
 
-public class Stack<T> extends LinkedList<T> {
+public class Stack<T extends Comparable<T>> extends LinkedList<T> {
 
-  public void push(T data) {
+  public boolean push(T data) {
     addToHead(data);
+    return true;
   }
 
   public T pop() {
-    return popFromHead();
+    Node<T> node = popFromHead();
+    return (this.isEmpty()) ? null : node.data;
   }
 
   public T peek() {
-    return (head != null) ? head.data : null;
+    return (this.isEmpty()) ? null : head.data;
   }
 
-  public boolean isEmpty() {
-    return size == 0;
-  }
 }

@@ -1,20 +1,19 @@
 package com.kumarsoumya.collection;
 
-public class Queue<T> extends LinkedList<T> {
+public class Queue<T extends Comparable<T>> extends LinkedList<T> {
 
-  public void push(T data) {
+  public boolean push(T data) {
     addToHead(data);
+    return true;
   }
 
   public T pop() {
-    return popFromTail();
+    Node<T> node = popFromTail();
+    return (this.isEmpty()) ? null : node.data;
   }
 
   public T peek() {
-    return (tail != null) ? tail.data : null;
+    return (this.isEmpty()) ? null : tail.data;
   }
 
-  public boolean isEmpty() {
-    return size == 0;
-  }
 }

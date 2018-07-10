@@ -1,130 +1,148 @@
 package com.kumarsoumya.collection;
 
-public class LinkedList<T> {
+public class LinkedList<T extends Comparable<T>> {
 
-  public Node<T> head;
-  public int size;
-  public Node<T> tail;
+  protected Node<T> head;
+  protected Node<T> tail;
 
-  public class Node<E> {
+  private int size;
+
+  protected class Node<E> {
     public E data;
     public Node<E> next;
 
     public Node(E data) {
       this.data = data;
-      this.next = null;
     }
+
   }
 
-  public void addToTail(T data) {
-    head = addToTail(head, data);
+  public int size() {
+    return size;
   }
 
-  private Node<T> addToTail(Node<T> head, T data) {
-    if (head == null) {
-      size++;
-      tail = new Node<T>(data);
-      return tail;
-    } else {
-      head.next = addToTail(head.next, data);
-    }
-    return head;
+  public boolean isEmpty() {
+    return (size == 0);
   }
 
-  public void addToHead(T data) {
-    if (head == null) {
-      tail = new Node<T>(data);
-      head = tail;
-    } else {
-      Node<T> curr = new Node<T>(data);
-      curr.next = head;
-      head = curr;
-    }
-    size++;
-  }
-
-  public void insert(T data) {
+  public boolean add(T data) {
     addToHead(data);
+    return true;
   }
 
-  public T popFromHead() {
-    if (head == null) {
-      return null;
+  protected void addToHead(T data) {
+    Node<T> node = new Node<T>(data);
+    if (this.isEmpty()) {
+      head = tail = node;
     } else {
-      Node<T> curr = head;
-      head = curr.next;
-      curr.next = null;
-      size--;
-      return curr.data;
+      node.next = head;
+      head = node;
     }
-  }
-
-  public T popFromTail() {
-    if (head == null) {
-      return null;
-    } else {
-      T data = tail.data;
-      remove(data);
-      return data;
-    }
-  }
-
-  public void remove(T data) {
-    remove(data, false);
+    ++size;
   }
 
   public boolean contains(T data) {
-    if (head == null) {
-      return false;
-    } else {
-      Node<T> curr = head;
-      while (curr != null) {
-        if (curr.data.equals(data)) {
-          return true;
-        }
-        curr = curr.next;
-      }
+    if (this.isEmpty()) {
       return false;
     }
+    return contains(head, data);
   }
 
-  public void remove(T data, boolean all) {
+  private boolean contains(Node<T> head, T data) {
+    if (head == null) {
+      return false;
+    }
+
+    T value = head.data;
+    if (value == null && null == data) {
+      return true;
+    } else if (value.compareTo(data) == 0) {
+      return true;
+    }
+
+    return contains(head.next, data);
+  }
+
+  public boolean remove(T data) {
+    return remove(head, null, data);
+  }
+
+  private boolean remove(Node<T> next, Node<T> prev, T data) {
+    if (next == null) {
+      return false;
+    }
+
+    T value = next.data;
+    if (value == null && null == data) {
+      ;
+    } else if (value.compareTo(data) == 0) {
+      ;
+    } else {
+      return remove(next.next, next, data);
+    }
+
+    if (prev == null) {
+      head = next.next;
+    } else if (next == tail) {
+      prev.next = tail.next;
+      tail = prev;
+    } else {
+      prev.next = next.next;
+    }
+    next.next = null;
+    --size;
+    return true;
+  }
+
+  protected Node<T> popFromHead() {
+    Node<T> node = head;
+    if (!this.isEmpty()) {
+      if (head == tail) {
+        head = tail = node.next;
+      } else {
+        head = node.next;
+        node.next = null;
+      }
+      --size;
+    }
+    return node;
+  }
+
+  protected Node<T> popFromTail() {
+    Node<T> node = head;
+    if (!this.isEmpty()) {
+      if (head == tail) {
+        head = tail = node.next;
+      } else {
+        while (node.next != tail) {
+          node = node.next;
+        }
+        Node<T> temp = node;
+        node = tail;
+        tail = temp;
+        tail.next = null;
+      }
+      --size;
+    }
+    return node;
+  }
+
+  public String toString() {
+    StringBuilder valueOf = new StringBuilder();
+    valueOf.append('[');
+    toString(head, valueOf);
+    valueOf.append(']');
+    return valueOf.toString();
+  }
+
+  private void toString(Node<T> head, StringBuilder valueOf) {
     if (head == null) {
       return;
-    } else {
-      Node<T> curr = head;
-      Node<T> prev = null;
-      while (curr != null) {
-        if (curr.data.equals(data)) {
-          if (prev == null) {
-            head = curr.next;
-            curr.data = null;
-            curr.next = null;
-          } else {
-            prev.next = curr.next;
-            curr.data = null;
-            curr.next = null;
-          }
-          size--;
-          if (!all) {
-            return;
-          }
-        }
-        prev = curr;
-        curr = curr.next;
-      }
     }
-  }
-
-  public String traverse() {
-    return traverse(head);
-  }
-
-  private String traverse(Node<T> head) {
-    if (head.next == null) {
-      return head.data.toString();
-    } else {
-      return head.data.toString() + traverse(head.next);
+    valueOf.append(String.valueOf(head.data));
+    if (head != tail) {
+      valueOf.append(",");
     }
+    toString(head.next, valueOf);
   }
 }

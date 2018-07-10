@@ -2,69 +2,47 @@ package com.kumarsoumya.collection;
 
 import static org.junit.Assert.*;
 
+import java.lang.Character;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class QueueTest {
 
-  private Queue queue;
+  private Character[] datas = {'A', 'B', 'C'};
 
-  @Before
-  public void createQueueObject() {
-    queue = new Queue();
-  }
+  @Test
+  public void testPeek() {
+    Queue<Character> queue = new Queue<Character>();
+    assertEquals("Empty Queue should return null on peek()", null, queue.peek());
 
-  @After
-  public void destroyStackObject() {
-    queue = null;
-    System.gc();
+    for (Character data: datas) {
+      queue.push(data);
+    }
+    assertEquals(null, new Character('A'), queue.peek());
   }
 
   @Test
-  public void peekingFromQueueShouldShowElementFromEndOfQueue() {
-    queue.push('B');
-    queue.push('A');
+  public void testPop() {
+    Queue<Character> queue = new Queue<Character>();
+    assertEquals("Empty Queue should return null on pop()", null, queue.pop());
 
-    assertEquals("", 'B', queue.peek());
-    assertEquals("", 2, queue.size);
+    for (Character data: datas) {
+      queue.push(data);
+    }
+
+    assertEquals(null, new Character('A'), Character.valueOf(queue.pop()));
   }
 
   @Test
-  public void peekingFromAnEmptyQueueShouldShowANullValue() {
-    assertEquals("", null, queue.peek());
+  public void testPush() {
+    Queue<Character> queue = new Queue<Character>();
+    for (Character data: datas) {
+      queue.push(data);
+    }
+
+    assertEquals(null, "[C,B,A]", queue.toString());
   }
 
-  @Test
-  public void poppingFromQueueShouldPopElementFromEndOfQueue() {
-    queue.push('B');
-    queue.push('A');
-
-    assertEquals("", 'B', queue.pop());
-    assertEquals("", 1, queue.size);
-  }
-
-  @Test
-  public void poppingFromAnEmptyQueueShouldPopANullValue() {
-    assertEquals("", null, queue.pop());
-  }
-
-  @Test
-  public void pushingElementInQueueShouldPushElement() {
-    queue.push('B');
-    queue.push('A');
-
-    assertEquals("", "AB", queue.traverse());
-  }
-
-  @Test
-  public void emptyQueueShouldReturnTrueOnIsEmpty() {
-    assertTrue("", queue.isEmpty());
-  }
-
-  @Test
-  public void nonEmptyQueueShouldReturnFalseOnIsEmpty() {
-    queue.push('A');
-    assertFalse("", queue.isEmpty());
-  }
 }

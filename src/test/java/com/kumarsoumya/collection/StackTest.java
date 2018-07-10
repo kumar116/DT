@@ -8,63 +8,40 @@ import org.junit.Test;
 
 public class StackTest {
 
-  private Stack stack;
+  private Character[] datas = {'A', 'B', 'C'};
 
-  @Before
-  public void createStackObject() {
-    stack = new Stack();
-  }
+  @Test
+  public void testPeek() {
+    Stack<Character> stack = new Stack<Character>();
+    assertEquals("Empty Stack should return null on peek()", null, stack.peek());
 
-  @After
-  public void destroyStackObject() {
-    stack = null;
-    System.gc();
+    for (Character data: datas) {
+      stack.push(data);
+    }
+
+    assertEquals(null, new Character('C'), stack.peek());
   }
 
   @Test
-  public void peekingFromStackShouldShowElementFromStack() {
-    stack.push('B');
-    stack.push('A');
+  public void testPop() {
+    Stack<Character> stack = new Stack<Character>();
+    assertEquals("Empty Stack should return null on pop()", null, stack.pop());
 
-    assertEquals("", 'A', stack.peek());
-    assertEquals("", 2, stack.size);
+    for (Character data: datas) {
+      stack.push(data);
+    }
+
+    assertEquals(null, new Character('C'), stack.pop());
   }
 
   @Test
-  public void peekingFromAnEmptyStackShouldShowANullValue() {
-    assertEquals("", null, stack.peek());
+  public void testPush() {
+    Stack<Character> stack = new Stack<Character>();
+    for (Character data: datas) {
+      stack.push(data);
+    }
+
+    assertEquals(null, "[C,B,A]", stack.toString());
   }
 
-  @Test
-  public void poppingFromStackShouldPopElementFromStack() {
-    stack.push('B');
-    stack.push('A');
-
-    assertEquals("", 'A', stack.pop());
-    assertEquals("", 1, stack.size);
-  }
-
-  @Test
-  public void poppingFromAnEmptyStackShouldPopANullValue() {
-    assertEquals("", null, stack.pop());
-  }
-
-  @Test
-  public void pushingElementInStackShouldPushElement() {
-    stack.push('B');
-    stack.push('A');
-
-    assertEquals("", "AB", stack.traverse());
-  }
-
-  @Test
-  public void emptyStackShouldReturnTrueOnIsEmpty() {
-    assertTrue("", stack.isEmpty());
-  }
-
-  @Test
-  public void nonEmptyStackShouldReturnFalseOnIsEmpty() {
-    stack.push('A');
-    assertFalse("", stack.isEmpty());
-  }
 }
