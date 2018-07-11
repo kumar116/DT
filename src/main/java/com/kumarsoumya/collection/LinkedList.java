@@ -26,6 +26,9 @@ public class LinkedList<T extends Comparable<T>> {
   }
 
   public boolean add(T data) {
+    if (data == null) {
+      return false;
+    }
     addToHead(data);
     return true;
   }
@@ -54,9 +57,7 @@ public class LinkedList<T extends Comparable<T>> {
     }
 
     T value = head.data;
-    if (value == null && null == data) {
-      return true;
-    } else if (value.compareTo(data) == 0) {
+    if (value.compareTo(data) == 0) {
       return true;
     }
 
@@ -73,11 +74,7 @@ public class LinkedList<T extends Comparable<T>> {
     }
 
     T value = next.data;
-    if (value == null && null == data) {
-      ;
-    } else if (value.compareTo(data) == 0) {
-      ;
-    } else {
+    if (!(value.compareTo(data) == 0)) {
       return remove(next.next, next, data);
     }
 

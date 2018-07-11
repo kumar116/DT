@@ -15,6 +15,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   public boolean insert(T data) {
+    if (data == null) {
+      return false;
+    }
     head = insert(head, data);
     return true;
   }
@@ -24,9 +27,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
       head = new Node<T>(data);
     } else {
       T value = head.data;
-      if (value == null && null == data) {
-        head.left = insert(head.left, data);
-      } else if (value.compareTo(data) >= 0) {
+      if (value.compareTo(data) >= 0) {
         head.left = insert(head.left, data);
       } else {
         head.right = insert(head.right, data);
@@ -45,19 +46,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     T value = head.data;
-    if (null != value && value.compareTo(data) < 0) {
+    if (value.compareTo(data) < 0) {
       head.right = delete(head.right, data);
-    } else if (null != value && value.compareTo(data) > 0) {
+    } else if (value.compareTo(data) > 0) {
       head.left = delete(head.left, data);
-    } else if ((null != value && value.compareTo(data) == 0) || (value == null && null == data)) {
+    } else if (value.compareTo(data) == 0) {
       if (null == head.left) {
         return head.right;
       } else if (null == head.right) {
         return head.left;
       } else {
-        T newData = this.successor(head.right);
-        head.data = newData;
-        head.right = delete(head.right, newData);
+        T tmpData = this.successor(head.right);
+        head.data = tmpData;
+        head.right = delete(head.right, tmpData);
       }
     }
     return head;
@@ -147,9 +148,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
       return null;
     } else {
       T value = head.data;
-      if (value == null && null == data) {
-        return head.data;
-      } else if (value.compareTo(data) == 0) {
+      if (value.compareTo(data) == 0) {
         return head.data;
       } else if (value.compareTo(data) < 0) {
         return search(head.right, data);
@@ -160,7 +159,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   private T successor(Node<T> head) {
-    if (head.left == null && head.right == null) {
+    if (null != head.left && null != head.right) {
       return head.data;
     }
     return successor(head.left);
