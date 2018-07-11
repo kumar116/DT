@@ -1,5 +1,3 @@
-# Example
-
 **LinkedList, Stack, Queue, Binary Search Tree**
 
 * Generic Types
@@ -7,4 +5,4 @@
 * ~~Iterator~~
 * ~~Sort~~
 
-Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+Tests Run: 18, Failures: 0, Errors: 0, Skipped: 0
