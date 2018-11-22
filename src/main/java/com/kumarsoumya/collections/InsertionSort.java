@@ -1,24 +1,21 @@
 package com.kumarsoumya.collections;
 
+import java.util.Arrays;
+
 public class InsertionSort<T extends Comparable<T>> {
 
-    public void sort(T[] datas) {
-        if (null == datas) {
-            return;
-        }
-
-        int len = datas.length;
-        if (0 == len) {
-            return;
-        }
-
-        int i, j;
-        for (j = 1; j < len; j++) {
-            T data = datas[j];
-            for (i = (j - 1); (i >= 0) && (datas[i].compareTo(data) > 0); i--) {
-                datas[i + 1] = datas[i];
+    public void sort(T[] arr) {
+        for (int j = 1; j < arr.length; j++) {
+            T val = arr[j];
+            int i = j - 1;
+            while (i >= 0 && arr[i].compareTo(val) > 0) {
+                arr[i + 1] = arr[i];
+                if (Constant.DEBUG) {
+                    System.out.println(Arrays.toString(arr));
+                }
+                i = i - 1;
             }
-            datas[i + 1] = data;
+            arr[i + 1] = val;
         }
     }
 

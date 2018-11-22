@@ -9,7 +9,7 @@ public class BubbleSortTest {
     private Integer[] input;
     private Integer[] expect;
 
-    private BubbleSort sortClass = new BubbleSort();
+    private BubbleSort<Integer> sortClass = new BubbleSort<Integer>();
 
     @Before
     public void setUp() {
@@ -26,15 +26,13 @@ public class BubbleSortTest {
     @Test
     public void testNMinimum() {
         sortClass.nMinimum(input, 2);
-        assertEquals("", new Integer(0), input[9]);
-        assertEquals("", new Integer(1), input[8]);
+        assertArrayEquals("", new Integer[] {0, 1}, new Integer[] {input[9], input[8]});
     }
 
     @Test
     public void testNMaximum() {
         sortClass.nMaximum(input, 2);
-        assertEquals("", new Integer(9), input[9]);
-        assertEquals("", new Integer(8), input[8]);
+        assertArrayEquals("", new Integer[] {9, 8}, new Integer[] {input[9], input[8]});
     }
 
 }
