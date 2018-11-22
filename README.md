@@ -1,8 +1,13 @@
-**LinkedList, Stack, Queue, Binary Search Tree**
+* **LinkedList**
+* **Stack**
+* **Queue**
+* **Binary Search Tree**
 
-* Generic Types
-* Comparable
-* ~~Iterator~~
-* ~~Sort~~
+Generic Types, Comparable, ~~Iterator~~
 
-Tests Run: 18, Failures: 0, Errors: 0, Skipped: 0
+* **Insertion Sort**
+* **Bubble Sort**
+
+K-Minimums, K-Maximums
+
+Tests Run: 21, Failures: 0, Errors: 0, Skipped: 0
