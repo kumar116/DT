@@ -1,11 +1,12 @@
 package com.kumarsoumya.collections;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
 
-public class BubbleSortTest extends SortTest {
+public class HeapSortTest extends SortTest{
 
-    private BubbleSort<Integer> sortClass = new BubbleSort<Integer>();
+    private HeapSort<Integer> sortClass = new HeapSort<Integer>();
 
     @Test
     public void testSort() {
@@ -24,5 +25,4 @@ public class BubbleSortTest extends SortTest {
         sortClass.nMaximum(input, 2);
         assertArrayEquals("", new Integer[] {9999, 9998}, new Integer[] {input[input.length - 1], input[input.length - 2]});
     }
-
 }
